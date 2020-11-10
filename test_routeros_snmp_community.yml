@@ -1,0 +1,26 @@
+---
+- hosts: routeros
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+    - name: test base module
+      routeros_snmp_community:
+        name: test
+        addresses:
+          - 192.168.0.0/24
+          - 192.168.1.0/24
+        security: none
+        read_access: True
+        write_access: True
+        authentication_protocol: MD5
+        encryption_protocol: DES
+        authentication_password: auth_password
+        encryption_password: enc_password
+        disabled: False
+        status: present
+        # status: absent
+      register: output
+    - name: debug print
+      debug:
+        msg: "{{ output }}"
