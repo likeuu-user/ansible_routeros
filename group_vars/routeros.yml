@@ -1,0 +1,5 @@
+---
+ansible_connection: ansible.netcommon.network_cli
+ansible_network_os: community.network.routeros
+ansible_user: admin+cet512w
+ansible_password: password
