@@ -1,0 +1,14 @@
+---
+- hosts: routeros
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+    - name: test base module
+      routeros_system_identity:
+        name: "{{ inventory_hostname | upper}}"
+        # name: "{{ inventory_hostname }}"
+      register: output
+    - name: debug print
+      debug:
+        msg: "{{ output }}"
