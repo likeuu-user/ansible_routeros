@@ -1,0 +1,4 @@
+rb401101 ansible_ssh_host=192.168.0.1
+
+[routeros]
+rb401101
