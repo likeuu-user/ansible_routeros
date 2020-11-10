@@ -1,0 +1,17 @@
+---
+- hosts: routeros
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+    - name:
+      routeros_system_ntp_client:
+        enabled: True
+        primary_ntp: 0.0.0.0
+        secondary_ntp: 0.0.0.0
+        server_dns_names:
+          - ntp.nict.jp
+      register: output
+    - name: debug print
+      debug:
+        msg: "{{ output }}"
