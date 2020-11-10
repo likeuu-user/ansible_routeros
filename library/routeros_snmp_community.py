@@ -10,7 +10,7 @@ DOCUMENTATION = '''
 '''
 
 EXAMPLES = """
-- name: test base module
+- name: add or modify community
     routeros_snmp_community:
     name: test
     addresses:
@@ -26,7 +26,7 @@ EXAMPLES = """
     disabled: False
     status: present
 
-- name: test base module
+- name: delete community
     routeros_snmp_community:
     name: test
     status: absent
