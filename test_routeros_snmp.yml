@@ -1,0 +1,27 @@
+---
+- hosts: routeros
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+    - name: test base module\
+      routeros_snmp:
+        enabled: True
+        contact: aaa@aaa.aaa.aaa
+        location: Country
+        engine_id: '{{ inventory_hostname }}'
+        trap_target:
+          - 192.168.0.100
+        src_address: "{{ hostvars[inventory_hostname]['ansible_ssh_host'] }}"
+        trap_community: public
+        trap_version: 1
+        trap_generators:
+          - 'interfaces'
+          - 'start-trap'
+          - 'temp-exception'
+        trap_interfaces:
+          - ether4
+      register: output
+    - name: debug print
+      debug:
+        msg: "{{ output }}"
