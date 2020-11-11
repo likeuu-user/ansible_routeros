@@ -178,7 +178,6 @@ def make_command_snmp(dict_param, dict_object):
                     command_option = command_option + ' ' + param + '=' + dict_param[param]
 
     if command_option.strip() != '':
-        # command = '/snmp community set name=\"' + dict_param['name'] + '\"' + command_option 
         command = '/snmp set' + command_option 
 
     return command
