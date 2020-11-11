@@ -10,7 +10,7 @@ DOCUMENTATION = '''
 '''
 
 EXAMPLES = """
-- name: add or modify community
+- name: test base module
     routeros_snmp_community:
     name: test
     addresses:
@@ -26,7 +26,7 @@ EXAMPLES = """
     disabled: False
     status: present
 
-- name: delete community
+- name: test base module
     routeros_snmp_community:
     name: test
     status: absent
@@ -95,7 +95,7 @@ def get_param(module):
 
 def parse_output_snmp_community(list_output):
     list_snmp_community = list()
-    list_param = ['name', 'addresses', 'security', 'read-access', 'write-access',
+    list_param = ['id', 'name', 'addresses', 'security', 'read-access', 'write-access',
                 'authentication-protocol', 'encryption-protocol', 'authentication-password',
                 'encryption-password', 'comment', 'disabled']
 
@@ -196,7 +196,7 @@ def make_command_snmp_community(dict_param, list_object):
 
     if command_option.strip() != '':
         # command = '/snmp community set name=\"' + dict_param['name'] + '\"' + command_option 
-        command = '/snmp community set ' + str(index) + ' ' + command_option 
+        command = '/snmp community set ' + list_object[index]['id'] + ' ' + command_option 
 
     return command
 
