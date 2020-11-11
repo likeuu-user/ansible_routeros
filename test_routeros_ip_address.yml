@@ -1,0 +1,17 @@
+---
+- hosts: routeros
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+    - name: test base module
+      routeros_ip_address:
+        address: 192.168.88.1/24
+        interface: ether5
+        comment: test for ansible
+        disabled: False
+        status: present
+      register: output
+    - name: debug print
+      debug:
+        msg: "{{ output }}"

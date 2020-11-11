@@ -5,6 +5,7 @@
 - community/routeros
 - community/network
 ## component
+- routeros_ip_address
 - routeros_snmp
 - routeros_snmp_community
 - routeros_system_identity
