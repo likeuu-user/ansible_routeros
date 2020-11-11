@@ -25,3 +25,6 @@
     - name: debug print
       debug:
         msg: "{{ output }}"
+    - name: test base module\
+      routeros_snmp:
+        enabled: False
